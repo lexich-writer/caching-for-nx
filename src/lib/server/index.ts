@@ -43,7 +43,7 @@ export async function server(): Promise<void> {
   )
 
   //? Upload cache
-  fastify.put('/v8/artifacts/:hash', async request => {
+  fastify.put('/v1/cache/:hash', async request => {
     const hash = (request.params as { hash: string }).hash
     request.log.info(`Received artifact for ${hash}`)
     const provider = getProvider()
@@ -58,7 +58,7 @@ export async function server(): Promise<void> {
   })
 
   //? Download cache
-  fastify.get('/v8/artifacts/:hash', async (request, reply) => {
+  fastify.get('/v1/cache/:hash', async (request, reply) => {
     const hash = (request.params as { hash: string }).hash
     request.log.info(`Requested artifact for ${hash}`)
     const provider = getProvider()

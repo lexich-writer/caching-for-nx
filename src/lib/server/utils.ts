@@ -44,12 +44,21 @@ export async function launchServer(devRun?: boolean): Promise<void> {
     console.log(`export TURBO_API=http://localhost:${serverPort}`)
     console.log(`export TURBO_TOKEN=turbogha`)
     console.log(`export TURBO_TEAM=turbogha`)
+    console.log(
+      `export NX_SELF_HOSTED_REMOTE_CACHE_SERVER=http://localhost:${serverPort}`
+    )
+    console.log(`export NX_SELF_HOSTED_REMOTE_CACHE_ACCESS_TOKEN=default`)
   } else {
     core.info('The following environment variables are exported:')
     exportVariable('TURBOGHA_PORT', `${serverPort}`)
     exportVariable('TURBO_API', `http://localhost:${serverPort}`)
     exportVariable('TURBO_TOKEN', 'turbogha')
     exportVariable('TURBO_TEAM', 'turbogha')
+    exportVariable(
+      'NX_SELF_HOSTED_REMOTE_CACHE_SERVER',
+      `http://localhost:${serverPort}`
+    )
+    exportVariable('NX_SELF_HOSTED_REMOTE_CACHE_ACCESS_TOKEN', 'default')
   }
 }
 
